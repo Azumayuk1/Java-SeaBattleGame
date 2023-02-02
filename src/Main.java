@@ -183,6 +183,11 @@ class BattleMap {
     static Cell[] translateInputCoordinates(String inputStr) {
         String[] stringCellsArray = inputStr.split(" ");
 
+        // To avoid ArrayIndexOutOfBoundsException
+        if (stringCellsArray.length != 2) {
+            return new Cell[]{new Cell(-1, -1), new Cell(-1, -1)};
+        }
+
         return new Cell[]{
                 translateCoordinate(stringCellsArray[0]),
                 translateCoordinate(stringCellsArray[1])
